@@ -65,5 +65,5 @@ if (args.includes("-n")) {
     return;
 }
 
-generateDiagram({});
+generateDiagram(width, height, [{x: Math.floor(Math.random() * width), y: Math.floor(Math.random() * height)}, {x: Math.floor(Math.random() * width), y: Math.floor(Math.random() * height)}]);
 
