@@ -1,4 +1,4 @@
-const repChars = ".+;>#"
+const repChars = ".+;>#2eb/-?Q~*&$%"
 
 let euclid = ({x: x1, y: y1}, {x: x2, y: y2}) => Math.sqrt( (x1-x2)**2 + (y1-y2)**2 )
 
@@ -27,10 +27,26 @@ async function voronoi(width, height, points) {
     }
 }
 
-async function generateDiagram() {
+async function generateDiagram(points) {
     console.log("Generating voronoi diagram...");
-    await voronoi(10, 10, [{x: 5, y: 1}, {x: 9, y: 9}, {x: 2, y: 5}]);
+    await voronoi(10, 10, points);
 }
 
-generateDiagram();
+const args = process.argv.slice(2);
+if (args.includes("-n")) {
+    
+    console.log("test");
+    // get next arg (throw if invalid) and set that to the amount of points
+    if (args.indexOf("-n") + 1 >= args.length) throw "No argument for -n flag provided";
+    const numOfPoints = parseInt(args[args.indexOf("-n") + 1])
+    let points = []
+    for (let i = 0; i < numOfPoints; i++) {
+	points.push({x: Math.floor(Math.random() * 10), y: Math.floor(Math.random() * 10)})
+    }
+    console.log(points);
+    generateDiagram(points);
+    return;
+}
+
+generateDiagram({});
 
