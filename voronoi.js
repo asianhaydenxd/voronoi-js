@@ -27,12 +27,26 @@ async function voronoi(width, height, points) {
     }
 }
 
-async function generateDiagram(points) {
+async function generateDiagram(width, height, points) {
     console.log("Generating voronoi diagram...");
-    await voronoi(10, 10, points);
+    await voronoi(width, height, points);
 }
 
 const args = process.argv.slice(2);
+
+let width = 10;
+let height = 10;
+
+if (args.includes("-w")) {
+    if (args.indexOf("-w") + 1 >= args.length) throw "No arguments for -w flag provided";
+    width = parseInt(args[args.indexOf("-w") + 1]);
+}
+
+if (args.includes("-h")) {
+    if (args.indexOf("-h") + 1 >= args.length) throw "No arguments for -h flag provided";
+    height = parseInt(args[args.indexOf("-h") + 1]);
+}
+
 if (args.includes("-n")) {
     
     console.log("test");
@@ -44,10 +58,10 @@ if (args.includes("-n")) {
 
     let points = []
     for (let i = 0; i < numOfPoints; i++) {
-	points.push({x: Math.floor(Math.random() * 10), y: Math.floor(Math.random() * 10)})
+	points.push({x: Math.floor(Math.random() * width), y: Math.floor(Math.random() * height)})
     }
     console.log(points);
-    generateDiagram(points);
+    generateDiagram(width, height, points);
     return;
 }
 
