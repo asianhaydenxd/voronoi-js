@@ -39,6 +39,9 @@ if (args.includes("-n")) {
     // get next arg (throw if invalid) and set that to the amount of points
     if (args.indexOf("-n") + 1 >= args.length) throw "No argument for -n flag provided";
     const numOfPoints = parseInt(args[args.indexOf("-n") + 1])
+    
+    if (numOfPoints >= repChars.length) throw "Too many points, not enough characters";
+
     let points = []
     for (let i = 0; i < numOfPoints; i++) {
 	points.push({x: Math.floor(Math.random() * 10), y: Math.floor(Math.random() * 10)})
