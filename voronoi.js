@@ -48,8 +48,6 @@ if (args.includes("-h")) {
 }
 
 if (args.includes("-n")) {
-    
-    console.log("test");
     // get next arg (throw if invalid) and set that to the amount of points
     if (args.indexOf("-n") + 1 >= args.length) throw "No argument for -n flag provided";
     const numOfPoints = parseInt(args[args.indexOf("-n") + 1])
@@ -60,7 +58,6 @@ if (args.includes("-n")) {
     for (let i = 0; i < numOfPoints; i++) {
 	points.push({x: Math.floor(Math.random() * width), y: Math.floor(Math.random() * height)})
     }
-    console.log(points);
     generateDiagram(width, height, points);
     return;
 }
